@@ -1,0 +1,17 @@
+#lo : int
+#hi : Int
+#k : Limit
+# Find a,b
+#lo<= a <= b <= hi
+# a^b <= k
+def maxXor(lo, hi, k):
+    result = 0
+    for i in range(hi, lo - 1, -1): #instead of unwanted variable declaration we can use i and j to get
+        for j in range(i, lo - 1, -1):#all combinations of hi and lo. This will also make sure that a <= b
+            if i ^ j <= k:
+                result = max(result, i ^ j)#instead of having if(result <= a^b): result = a^b we can use max function
+    return result                          #to assign the max of result and i^j to result
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print(maxXor(2,4,8))
